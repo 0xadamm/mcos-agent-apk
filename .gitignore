@@ -1,0 +1,5 @@
+.DS_Store
+*.jks
+*.keystore
+CREDENTIALS.txt
+bootstrap*.json
