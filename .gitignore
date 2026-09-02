@@ -2,4 +2,6 @@
 *.jks
 *.keystore
 CREDENTIALS.txt
+# Per-machine bootstrap files stay out of git. Only the blank template is tracked.
 bootstrap*.json
+!bootstrap.json
