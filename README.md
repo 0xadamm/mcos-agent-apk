@@ -44,21 +44,17 @@ Open `bootstrap.json` **from the USB drive** in a plain text editor:
 - **Windows:** right-click the file → **Open with** → **Notepad**.
 - **Mac:** right-click the file → **Open With** → **TextEdit**. If TextEdit shows a formatting toolbar, choose **Format → Make Plain Text** first.
 
-The words `REPLACE-WITH-MACHINE-NUMBER` appear **twice**, on these two lines:
+Find this line:
 
 ```
 "machineId": "REPLACE-WITH-MACHINE-NUMBER",
-"authenticationToken": "REPLACE-WITH-MACHINE-NUMBER",
 ```
 
-Replace those words with the machine's number in **both** places. Keep the quotation marks. For machine 2602080991 the two lines become:
+Replace only the words `REPLACE-WITH-MACHINE-NUMBER` with the machine's number. Keep the quotation marks. For machine 2602080991 the line becomes:
 
 ```
 "machineId": "2602080991",
-"authenticationToken": "2602080991",
 ```
-
-Tip: use **Edit → Replace** (Windows: Ctrl+H, Mac: Cmd+Option+F) to change both at once.
 
 Do not change anything else in the file. Save it, keeping the name `bootstrap.json`.
 
