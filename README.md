@@ -112,53 +112,9 @@ In ES File Explorer:
 
 Open **MCOS Device Agent** again. The screen should now show **Provisioned** with the machine number. The settings file disappears from the folder on its own once it has been read. That is normal.
 
-### 10. Put the machine back the way it was
-
-1. Unplug the USB drive.
-2. Make sure the normal vending screen is showing and the machine can vend.
-
-### 11. Tell MediCube it is done
-
-Send your MediCube contact the machine number. They confirm the connection from their side. The app's own screen only shows "Provisioned", not whether it has reached the server.
-
 ---
 
 ## Please do not
 
 - **Do not uninstall, disable, or force-stop the vending app.** It is what makes the machine vend and it is very hard to restore.
 - **Do not change anything in the service menu other than the two items above** ("Go to Android setting" and "Go to ES browser").
-
-## Something went wrong?
-
-| What you see | What to do |
-|---|---|
-| The drive does not show up under **usb** | Try another USB port. Check the drive is FAT32, not exFAT or NTFS. |
-| "Install blocked" | Step 5 was missed. Turn on Unknown sources and try again. |
-| App still says **"Not provisioned"** after step 9 | The file is not named exactly `bootstrap.json`, or it is in the wrong folder. Check step 8. Also check that only the machine number was changed and the quotation marks are still there. |
-| The app shows the machine number as `REPLACE-WITH-MACHINE-NUMBER` | The number was not typed into the file. Redo step 3 (both places), then delete and reinstall the app (long-press the icon → App info → Uninstall) and repeat from step 7. |
-
----
-
-## Technical details
-
-| | |
-|---|---|
-| File | `mcos-device-agent-v1.3.0-api25.apk` |
-| Version | `1.3.0-api25` (versionCode 4) |
-| Package | `com.medicube.mcos.agent` |
-| minSdk / targetSdk | 24 / 28 |
-| Signing | v2 scheme · `CN=MediCube Device Agent, O=Cube Wellness Technologies` |
-| SHA-256 | `b73ce36eb088a23e69262c7dc166bc62022ce8879b97f1c36852c41c1776961c` |
-| Built | 2026-08-24 |
-
-Verify the download:
-
-```bash
-shasum -a 256 mcos-device-agent-v1.3.0-api25.apk
-```
-
-The agent makes one outbound `wss://` connection to `medicube-agent.vertxlabs.com` and accepts file and screen-management commands from that gateway. `adb` is not available on these boards (USB ports are host mode, network adb is closed), which is why the install goes through ES File Explorer.
-
-`bootstrap.json` in this repo is a template. Per-machine copies (`bootstrap-<machineId>.json`) are ignored by git and must never be committed.
-
-**Updating this repo:** replace the APK, update the table above, and refresh the screenshots if the steps change. Every build must be signed with the same keystore or Android will refuse the update on every deployed machine. The keystore lives outside this repo. Source and build notes are in the `Medicube-MCOS` / `medicube-v2` working repos.
