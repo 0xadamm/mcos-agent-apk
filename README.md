@@ -72,8 +72,6 @@ Use **Safely Remove** (Windows) or **Eject** (Mac) before unplugging, so the fil
 
 ## Part 2 — Install on the machine
 
-![The steps on the machine, in order](docs/img/3-on-the-machine.png)
-
 ### 5. Open the service menu
 
 Use the admin **gesture + PIN** on the machine's screen. This opens the **engineering / service menu**.
@@ -92,6 +90,8 @@ In the service menu tap **"Go to Android setting"**, then:
 Press the back button until you are back in the service menu.
 
 ### 7. Plug in the USB drive and open the file manager
+
+![Open ES File Explorer and install the app](docs/img/3-on-the-machine.png)
 
 Plug the drive into a USB port on the machine's board. Then in the service menu tap **"Go to ES browser"**. This opens **ES File Explorer**.
 
