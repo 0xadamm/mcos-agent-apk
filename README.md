@@ -62,7 +62,7 @@ Tip: use **Edit → Replace** (Windows: Ctrl+H, Mac: Cmd+Option+F) to change bot
 
 Do not change anything else in the file. Save it, keeping the name `bootstrap.json`.
 
-> Doing several machines in one trip? Make one copy per machine on the drive, named `bootstrap-2602080991.json`, `bootstrap-2602080992.json`, and so on. At each machine you will copy the matching one and rename it to `bootstrap.json` (step 9).
+> Doing several machines in one trip? Make one copy per machine on the drive, named `bootstrap-2602080991.json`, `bootstrap-2602080992.json`, and so on. At each machine you will copy the matching one and rename it to `bootstrap.json` (step 8).
 
 ### 4. Eject the drive
 
@@ -72,24 +72,16 @@ Use **Safely Remove** (Windows) or **Eject** (Mac) before unplugging, so the fil
 
 ## Part 2 — Install on the machine
 
-### 5. Open the service menu
+### 5. Allow apps to be installed
 
-Use the admin **gesture + PIN** on the machine's screen. This opens the **engineering / service menu**.
-
-In that menu, turn **OFF** the switch called **"Keep APP working foreground"**. This stops the vending screen from jumping back in front while you work.
-
-> This switch turns itself back on after about 15 minutes. If the vending screen comes back mid-way, reopen the service menu and turn it off again.
-
-### 6. Allow apps to be installed
-
-In the service menu tap **"Go to Android setting"**, then:
+Open the machine's **service menu** (admin gesture + PIN), tap **"Go to Android setting"**, then:
 
 - Go to **Security** and turn **ON** **"Unknown sources"**. Confirm if asked.
 - If there is no "Unknown sources" switch, look for **"Install unknown apps"** instead and allow it for **ES File Explorer**.
 
 Press the back button until you are back in the service menu.
 
-### 7. Plug in the USB drive and open the file manager
+### 6. Plug in the USB drive and open the file manager
 
 ![Open ES File Explorer and install the app](docs/img/3-on-the-machine.png)
 
@@ -99,13 +91,13 @@ Plug the drive into a USB port on the machine's board. Then in the service menu 
 
 In ES File Explorer, look for **usb** in the left-hand list and tap it. You should see the two files you copied. If the drive does not appear within a few seconds, unplug it and try a different USB port.
 
-### 8. Install the app
+### 7. Install the app
 
 Tap **mcos-device-agent-v1.3.0-api25.apk** → tap **Install** → wait → tap **Done** (not Open).
 
 Now find the new **MCOS Device Agent** icon (it looks like a rounded square with "MC" on it) in the app list and **tap it once**. It will say **"Not provisioned"**. That is expected. Opening it once creates the folder you need next. Press back to return to ES File Explorer.
 
-### 9. Copy the settings file into the app's folder
+### 8. Copy the settings file into the app's folder
 
 ![Copy bootstrap.json from the USB drive into the app folder](docs/img/4-copy-settings.png)
 
@@ -116,17 +108,16 @@ In ES File Explorer:
 3. Tap **Paste**.
 4. If you used a per-machine name such as `bootstrap-2602080991.json`, long-press it → **Rename** → change it to exactly `bootstrap.json`. The app ignores any other name.
 
-### 10. Start the app
+### 9. Start the app
 
 Open **MCOS Device Agent** again. The screen should now show **Provisioned** with the machine number. The settings file disappears from the folder on its own once it has been read. That is normal.
 
-### 11. Put the machine back the way it was
+### 10. Put the machine back the way it was
 
-1. Reopen the service menu and turn **"Keep APP working foreground"** back **ON**.
-2. Unplug the USB drive.
-3. Make sure the normal vending screen is showing and the machine can vend.
+1. Unplug the USB drive.
+2. Make sure the normal vending screen is showing and the machine can vend.
 
-### 12. Tell MediCube it is done
+### 11. Tell MediCube it is done
 
 Send your MediCube contact the machine number. They confirm the connection from their side. The app's own screen only shows "Provisioned", not whether it has reached the server.
 
@@ -135,17 +126,16 @@ Send your MediCube contact the machine number. They confirm the connection from 
 ## Please do not
 
 - **Do not uninstall, disable, or force-stop the vending app.** It is what makes the machine vend and it is very hard to restore.
-- **Do not change anything in the service menu other than the two items above** ("Keep APP working foreground" and "Go to Android setting" / "Go to ES browser").
+- **Do not change anything in the service menu other than the two items above** ("Go to Android setting" and "Go to ES browser").
 
 ## Something went wrong?
 
 | What you see | What to do |
 |---|---|
 | The drive does not show up under **usb** | Try another USB port. Check the drive is FAT32, not exFAT or NTFS. |
-| "Install blocked" | Step 6 was missed. Turn on Unknown sources and try again. |
-| App still says **"Not provisioned"** after step 10 | The file is not named exactly `bootstrap.json`, or it is in the wrong folder. Check step 9. Also check that only the machine number was changed and the quotation marks are still there. |
-| The vending screen keeps coming back | Reopen the service menu and turn off "Keep APP working foreground" again. You have about 15 minutes each time. |
-| The app shows the machine number as `REPLACE-WITH-MACHINE-NUMBER` | The number was not typed into the file. Redo step 3 (both places), then delete and reinstall the app (long-press the icon → App info → Uninstall) and repeat from step 8. |
+| "Install blocked" | Step 5 was missed. Turn on Unknown sources and try again. |
+| App still says **"Not provisioned"** after step 9 | The file is not named exactly `bootstrap.json`, or it is in the wrong folder. Check step 8. Also check that only the machine number was changed and the quotation marks are still there. |
+| The app shows the machine number as `REPLACE-WITH-MACHINE-NUMBER` | The number was not typed into the file. Redo step 3 (both places), then delete and reinstall the app (long-press the icon → App info → Uninstall) and repeat from step 7. |
 
 ---
 
