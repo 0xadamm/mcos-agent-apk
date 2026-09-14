@@ -5,3 +5,6 @@ CREDENTIALS.txt
 # Per-machine bootstrap files stay out of git. Only the blank template is tracked.
 bootstrap*.json
 !bootstrap.json
+
+# release-upload artifact only (same bytes as the versioned APK)
+mcos-device-agent-latest-api25.apk

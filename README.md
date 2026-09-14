@@ -32,7 +32,7 @@ The machine only reads FAT32 drives.
 
 Right-click each link and choose **Save link as…**, then save both to the USB drive.
 
-1. **[mcos-device-agent-v1.3.0-api25.apk](https://github.com/0xadamm/mcos-agent-apk/raw/main/mcos-device-agent-v1.3.0-api25.apk)** — the app itself.
+1. **[mcos-device-agent-latest-api25.apk](https://github.com/0xadamm/mcos-agent-apk/releases/latest/download/mcos-device-agent-latest-api25.apk)** — the app itself. This link always gives you the current build.
 2. **[bootstrap.json](https://github.com/0xadamm/mcos-agent-apk/raw/main/bootstrap.json)** — a small settings file that tells the app which machine it is on.
 
 ### 3. Type the machine number into `bootstrap.json`
@@ -89,7 +89,7 @@ In ES File Explorer:
 1. Plug the USB drive into a USB port on the machine's board.
 2. In ES, go to the machine's top-level folder (in the drawer, tap **Device** or **/**), then open **system**, then **app**.
 3. Tap **New → Folder** and name it exactly `MCOSAgent`. Open that new folder.
-4. In the drawer tap **usb**, **long-press** `mcos-device-agent-v1.3.0-api25.apk` → **Copy**.
+4. In the drawer tap **usb**, **long-press** `mcos-device-agent-latest-api25.apk` → **Copy**.
 5. Go back to **/system/app/MCOSAgent/** and tap **Paste**.
 
 If the USB drive does not appear in the drawer within a few seconds, unplug it and try another port.
