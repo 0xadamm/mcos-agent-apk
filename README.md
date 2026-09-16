@@ -109,13 +109,19 @@ Open **MCOS Device Agent** again. The screen should now show **Provisioned** wit
 
 ## How to tell it worked
 
-**"Provisioned" is not the finish line.** It only means the app successfully read the settings file. It does **not** mean the app is actually talking to MediCube yet — that happens a few seconds later, over the internet, and the app's own screen has no way to show it.
+**"Provisioned" is not the finish line.** It only means the app successfully read the settings file. It does **not** mean the app is talking to MediCube yet — that happens a few seconds later, over the internet, and the app's own screen has no way to show it.
 
-1. Wait about a minute after opening the app in step 10.
-2. **Text or call your MediCube contact** and ask them to confirm the machine is showing as connected on their end. This is the only real confirmation — don't rely on what the machine's screen says.
-3. Only pack up and leave once your contact confirms the machine is connected. If they don't see it connect after a few minutes, don't reinstall or repeat steps — call them first. Something as simple as a wrong settings file for that machine will still show "Provisioned," so guessing your way through it can make troubleshooting harder later.
+Check the dashboard instead:
 
----
+1. Open the MediCube dashboard and go to **Machines**. This page lists every vending board whose agent has connected.
+2. Find the machine you just installed, by its number.
+3. It should show a green **Online** pill, along with its agent version and a recent heartbeat. The list refreshes every 6 seconds on its own — you don't need to reload.
+
+Give it about a minute after step 10. A board that has installed correctly shows up on its own, without anyone doing anything on the server.
+
+**If it never appears, or shows Offline:** don't reinstall and don't repeat the steps. A wrong or mismatched settings file still shows "Provisioned" on the machine, so repeating the install won't fix it and makes it harder to work out what went wrong. Contact MediCube with the machine number before you leave the site.
+
+*No dashboard access? Text or call your MediCube contact and ask them to confirm the machine is showing as connected. Don't pack up until someone has confirmed it — on the dashboard or by phone.*
 
 ## Please do not
 
