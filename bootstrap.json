@@ -1,6 +1,0 @@
-{
-  "machineId": "REPLACE-WITH-MACHINE-NUMBER",
-  "authenticationToken": "not-required",
-  "websocketUrl": "wss://medicube-agent.vertxlabs.com/device/v1",
-  "allowedRoots": ["/sdcard", "/storage/emulated/0", "/mnt/sdcard"]
-}
