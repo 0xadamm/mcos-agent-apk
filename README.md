@@ -12,8 +12,8 @@ The app runs quietly in the background and lets MediCube manage the screen on th
 |---|---|
 | A USB thumb drive | Any size. It will be erased. |
 | A computer | Windows or Mac, to prepare the drive. |
-| The machine's settings file | Sent to you by your MediCube contact before your visit — see Part 1, step 2. One file per machine. |
-| The machine's number | Printed on the machine, usually a 10-digit number such as `2602080991`. You'll use it to match the right settings file to the right machine. |
+| The machine's settings file | Prepared by MediCube for one specific machine and given to you before your visit — see Part 1, step 2. One file per machine. |
+| The machine's number | A 10-digit number such as `2602080991`. You read it off the machine itself in step 4 (not from a sticker) and use it to match the right settings file to the right machine. |
 | The admin gesture + PIN | Used to open the machine's service menu. Your MediCube contact has these. |
 
 ---
@@ -35,11 +35,11 @@ You need two files on the drive. They come from two different places — that's 
 
 1. **The app.** Right-click this link and choose **Save link as…**, then save it to the USB drive:
    **[mcos-device-agent-latest-api25.apk](https://github.com/0xadamm/mcos-agent-apk/releases/latest/download/mcos-device-agent-latest-api25.apk)** — this link always gives you the current build.
-2. **The settings file (`bootstrap.json`).** This is **not** downloaded from this page. Your MediCube contact sends it to you directly (usually by email) before your visit, already filled in for one specific machine. Save the attachment they sent you onto the same USB drive.
+2. **The settings file (`bootstrap.json`).** This is **not** downloaded from this page. MediCube prepares it for one specific machine and gets it to you directly before your visit. Save it onto the same USB drive.
 
-   This file contains a private code that lets the app connect securely — treat it the way you'd treat a password. Don't forward it, post it anywhere public, or open it in a text editor. Just copy it onto the drive as-is.
+   This file contains a private code that lets the app connect securely — treat it the way you'd treat a password. Don't forward it, post it anywhere public, or open it in a text editor. Just copy it onto the drive as-is, and delete it from your computer once the install is done.
 
-   > **Doing several machines in one trip?** Your MediCube contact will send you one settings file per machine, each named for its machine — for example `bootstrap-2602080991.json`. Save all of them to the drive. At each machine you'll copy the matching one and rename it to `bootstrap.json` (step 9) — match it by the number printed on the machine.
+   > **Doing several machines in one trip?** Your MediCube contact will send you one settings file per machine, each named for its machine — for example `bootstrap-2602080991.json`. Save all of them to the drive. At each machine you'll copy the matching one and rename it to `bootstrap.json` (step 9) — match it by the number you read off that machine in step 4.
 
 ### 3. Eject the drive
 
@@ -53,13 +53,18 @@ Use **Safely Remove** (Windows) or **Eject** (Mac) before unplugging, so the fil
 
 ![The steps on the machine, in order](docs/img/3-on-the-machine.png)
 
-### 4. Open the file manager and turn on Root Explorer
+### 4. Open the file manager, read the machine's number, and turn on Root Explorer
 
 Open the machine's **service menu** (admin gesture + PIN) and tap **"Go to ES browser"**. This opens **ES File Explorer**.
 
 > Use the **"Go to ES browser"** button, not any other way of opening ES. Other routes only open a photo/music picker.
 
-In ES File Explorer:
+In ES File Explorer, first read this machine's number. It is stored in a file on the machine; a sticker can be wrong or left over from another unit, so don't trust one. You don't need Root Explorer for this.
+
+1. Open `/sdcard/MachineData/Server/Machine.txt` (tap it to view). It is one line, like `AAA|2602080991|1B96B702…|4BBB`. **The machine number is the second part**, between the first two `|` marks. Write it down.
+2. Compare it with the settings file you were given (the number is in the file name, for example `bootstrap-2602080991.json`). **If they don't match, stop** and contact MediCube. Don't install with another machine's file.
+
+Then turn on Root Explorer:
 
 1. Open the left-hand drawer (the **☰** icon, or swipe in from the left edge) and scroll down to **Tools**.
 2. Switch **Root Explorer** to **ON**. If the machine asks to allow root access, allow it.
@@ -96,7 +101,7 @@ After the restart, find the new **MCOS Device Agent** icon (it looks like a roun
 
 Open the service menu → **"Go to ES browser"** again if needed. Then in ES File Explorer:
 
-1. Go to **usb**. Find the settings file for **this machine** — check the file name against the number printed on the machine. **Long-press** it → **Copy**.
+1. Go to **usb**. Find the settings file for **this machine** — check the file name against the number you read in step 4. **Long-press** it → **Copy**.
 2. Navigate to this folder: **sdcard → Android → data → com.medicube.mcos.agent → files**
 3. Tap **Paste**.
 4. If the file is named for a specific machine, such as `bootstrap-2602080991.json`, long-press it → **Rename** → change it to exactly `bootstrap.json`. The app ignores any other name.
@@ -115,7 +120,7 @@ Check the dashboard instead:
 
 1. Open the MediCube dashboard and go to **Machines**. This page lists every vending board whose agent has connected.
 2. Find the machine you just installed, by its number.
-3. It should show a green **Online** pill, along with its agent version and a recent heartbeat. The list refreshes every 6 seconds on its own — you don't need to reload.
+3. It should show a green **Online** pill, along with its agent version (**1.7.0 or newer**) and a recent heartbeat. The list refreshes every 6 seconds on its own — you don't need to reload.
 
 Give it about a minute after step 10. A board that has installed correctly shows up on its own, without anyone doing anything on the server.
 
