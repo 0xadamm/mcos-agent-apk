@@ -13,8 +13,20 @@ The app runs quietly in the background and lets MediCube manage the screen on th
 | A USB thumb drive | Any size. It will be erased. |
 | A computer | Windows or Mac, to prepare the drive. |
 | The machine's settings file | Prepared by MediCube for one specific machine and given to you before your visit — see Part 1, step 2. One file per machine. |
-| The machine's number | A 10-digit number such as `2602080991`. You read it off the machine itself in step 4 (not from a sticker) and use it to match the right settings file to the right machine. |
+| The machine's number | A 10-digit number such as `2602080991`. MediCube needs it **before your visit** to make that machine's settings file — see "Before your visit" below. It is stored on the machine, not reliably on a sticker. |
 | The admin gesture + PIN | Used to open the machine's service menu. Your MediCube contact has these. |
+
+---
+
+## Before your visit — get the machine's number
+
+MediCube makes the settings file for one specific machine, and to make it they need that machine's number. **So the number comes first.** The only reliable place to read it is the machine itself:
+
+- It is in the file `/sdcard/MachineData/Server/Machine.txt` on the machine. The file is one line, like `AAA|2602080991|1B96B702…|4BBB`. **The machine number is the second part**, between the first two `|` marks.
+- Have someone at the site open that file in the machine's file manager (see step 4 for how to get there) and send MediCube the number, or a photo of the file. Reading it needs no tools and does not change anything.
+- A sticker on the machine can be wrong or left over from another unit. If a sticker number is all you have, treat it as a guess: MediCube can make the file from it, but you **must** check it against `Machine.txt` at the machine (step 4) before installing.
+
+MediCube then makes the settings file for that number and gives it to you directly. Don't start Part 1 step 2 until you have it.
 
 ---
 
@@ -35,11 +47,11 @@ You need two files on the drive. They come from two different places — that's 
 
 1. **The app.** Right-click this link and choose **Save link as…**, then save it to the USB drive:
    **[mcos-device-agent-latest-api25.apk](https://github.com/0xadamm/mcos-agent-apk/releases/latest/download/mcos-device-agent-latest-api25.apk)** — this link always gives you the current build.
-2. **The settings file (`bootstrap.json`).** This is **not** downloaded from this page. MediCube prepares it for one specific machine and gets it to you directly before your visit. Save it onto the same USB drive.
+2. **The settings file (`bootstrap.json`).** This is **not** downloaded from this page. MediCube prepares it for one specific machine, from the number you gave them (see "Before your visit"), and gets it to you directly. Save it onto the same USB drive.
 
    This file contains a private code that lets the app connect securely — treat it the way you'd treat a password. Don't forward it, post it anywhere public, or open it in a text editor. Just copy it onto the drive as-is, and delete it from your computer once the install is done.
 
-   > **Doing several machines in one trip?** Your MediCube contact will send you one settings file per machine, each named for its machine — for example `bootstrap-2602080991.json`. Save all of them to the drive. At each machine you'll copy the matching one and rename it to `bootstrap.json` (step 9) — match it by the number you read off that machine in step 4.
+   > **Doing several machines in one trip?** Your MediCube contact will send you one settings file per machine, each named for its machine — for example `bootstrap-2602080991.json`. Save all of them to the drive. At each machine you'll copy the matching one and rename it to `bootstrap.json` (step 9) — match it by the number you read off that machine in step 4 — it must be the same number.
 
 ### 3. Eject the drive
 
@@ -59,10 +71,10 @@ Open the machine's **service menu** (admin gesture + PIN) and tap **"Go to ES br
 
 > Use the **"Go to ES browser"** button, not any other way of opening ES. Other routes only open a photo/music picker.
 
-In ES File Explorer, first read this machine's number. It is stored in a file on the machine; a sticker can be wrong or left over from another unit, so don't trust one. You don't need Root Explorer for this.
+In ES File Explorer, first read this machine's number again and check it against your settings file. This is the check that stops you installing the wrong file on a machine. You don't need Root Explorer for this.
 
 1. Open `/sdcard/MachineData/Server/Machine.txt` (tap it to view). It is one line, like `AAA|2602080991|1B96B702…|4BBB`. **The machine number is the second part**, between the first two `|` marks. Write it down.
-2. Compare it with the settings file you were given (the number is in the file name, for example `bootstrap-2602080991.json`). **If they don't match, stop** and contact MediCube. Don't install with another machine's file.
+2. Compare it with the settings file you were given (the number is in the file name, for example `bootstrap-2602080991.json`). **If they don't match, stop.** Don't install with another machine's file. Tell MediCube the number you read from `Machine.txt`, and they will make a new file for it.
 
 Then turn on Root Explorer:
 
