@@ -11,7 +11,6 @@ The app runs quietly in the background and lets MediCube manage the screen on th
 |                         |                                                                              |
 | ----------------------- | ---------------------------------------------------------------------------- |
 | A USB thumb drive       | Any size. It will be erased.                                                 |
-| A second USB drive      | For the backup in Part 0. The install drive is erased, so it cannot hold it. |
 | A computer              | Windows or Mac, to prepare the drive.                                        |
 | The machine's number    | Printed on the machine, usually a 10-digit number such as `2602080991`.      |
 | The admin gesture + PIN | Used to open the machine's service menu. Your MediCube contact has these.    |
@@ -20,31 +19,12 @@ The app runs quietly in the background and lets MediCube manage the screen on th
 
 ## The short version
 
-1. **Back up** the machine's screens and products to a second USB drive (Part 0).
-2. **Prepare the install drive** on a computer: FAT32, the app, and this machine's settings file from MCOS (Part 1).
-3. **Put the app in the machine's system folder** with the file manager, set two permissions, and restart (Part 2, steps 5 to 8). Never tap the app and choose Install.
-4. **Open the app once**, copy the settings file into the app's folder and rename it `bootstrap.json` (Part 2, steps 9 to 11).
-5. **Check it worked** in MCOS before you leave (Part 3).
+1. **Prepare the install drive** on a computer: FAT32, the app, and this machine's settings file from MCOS (Part 1).
+2. **Put the app in the machine's system folder** with the file manager, set two permissions, and restart (Part 2, steps 5 to 8). Never tap the app and choose Install.
+3. **Open the app once**, copy the settings file into the app's folder and rename it `bootstrap.json` (Part 2, steps 9 to 11).
+4. **Check it worked** in MCOS before you leave (Part 3).
 
 You do this once per machine. After that, MediCube updates the app remotely (see "Already installed?" at the end).
-
----
-
-## Part 0: Back up the machine first
-
-Do this before you change anything, including the steps that follow. If the install goes wrong, this copy is the only way back to the machine's current screens and products.
-
-> **Use a second USB drive for the backup.** Part 1 formats the install drive and erases it, so a backup sitting on that drive is gone by step 1 of Part 1.
-
-1. Plug the backup drive into a USB port on the machine's board.
-2. On the machine, open the file manager (service menu, then **Go to ES browser**), open the **usb** folder in the drawer, and make a new folder there with **New → Folder**. Name it for the machine and the date, for example `2602080991-2026-10-02`.
-3. Copy the **stand-by videos** out of `/storage/emulated/0/TcnFolder/ImageScreen` into the new folder: in the file manager, long-press the folder → **Copy**, then open the new folder on the drive and **Paste**.
-4. Copy the **product videos** out of `/storage/emulated/0/TcnFolder/VideoAndImageAd` the same way.
-5. Copy the other folders the screen and the products are built from, the same way: `/sdcard/YSConfig`, `/sdcard/TcnFolder/ImageGoods`, and `/sdcard/mcos-backup`.
-6. If the machine already has the agent on it, copy its current settings file too: `/sdcard/Android/data/com.medicube.mcos.agent/files/bootstrap.json`.
-7. **Confirm on site:** open `/storage/emulated/0/TcnFolder` and `/sdcard` in the file manager and copy anything else you recognise into the backup. The repo records only the folders listed above, so what else is on this machine has to be read at the machine.
-8. **Check the copy.** Open the new folder on the drive in the file manager and confirm every file and folder from steps 3 to 6 is in it. **Confirm on site:** open **Properties** on one copied file and compare its size with the original; the repo records no file sizes or counts, so there is nothing to check the numbers against.
-9. Unplug the backup drive from the machine. The drive you use for the install is a different one, and Part 1 formats it.
 
 ---
 
