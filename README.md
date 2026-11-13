@@ -83,7 +83,7 @@ Do not open or edit the file. Doing several machines in one trip? Add each board
 
 #### Finding the machine number
 
-You need the machine's number before you can add the board in MCOS (step 3 above). Read it off the board:
+You need the machine's number before you can add the board in MCOS (the **Add board** box in step 3). Read it off the board:
 
 - In the file manager, open the **`MachineData`** folder → **`Server`** → long-press **`Machine.txt`** → open it with a text editor. The full path is `/sdcard/MachineData/Server/Machine.txt`.
 - The machine number is the **second** field of that file: the text between the first and the second `|`.
