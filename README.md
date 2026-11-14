@@ -21,7 +21,7 @@ The app runs quietly in the background and lets MediCube manage the screen on th
 
 1. **Prepare the install drive** on a computer: FAT32, the app, and this machine's settings file from MCOS (Part 1).
 2. **Put the app in the machine's system folder** with the file manager, set two permissions, and restart (Part 2, steps 5 to 8). Never tap the app and choose Install.
-3. **Open the app once**, copy the settings file into the app's folder and rename it `bootstrap.json` (Part 2, steps 9 to 11).
+3. **Open the app once**, copy the settings file into the app's folder and rename it `bootstrap.json` (Part 2, steps 9 to 11), then **restart the machine once more** (step 12).
 4. **Check it worked** in MCOS before you leave (Part 3).
 
 You do this once per machine. After that, MediCube updates the app remotely (see "Already installed?" at the end).
@@ -138,16 +138,22 @@ Open the service menu → **"Go to ES browser"** again if needed. Then in ES Fil
 
 Open **MCOS Device Agent** again. The screen should now show **Provisioned: yes** with the machine number. The settings file disappears from the folder on its own once it has been read. That is normal.
 
+### 12. Restart the machine once more
+
+Restart the machine from the service menu, or power it off and on, and wait about two minutes. **Do not tap the APK.**
+
+The app only starts using the folders it was given after a restart. If you skip this, MCOS shows the machine as **Online** but cannot read its screen or products, and under the machine's **Settings** in MCOS it says **"Checkout folders: not set up"**.
+
 ---
 
 ## Part 3: Check that it worked (before you leave)
 
 "Provisioned: yes" on the machine only means the app read its settings file. It does not prove MediCube can reach the machine. Check both:
 
-1. **Online in MCOS.** Within about a minute, open **Machines** in MCOS. This machine should show as **Online**, with a "last seen" time from the last minute or two. If it does not, check that the number on the machine matches the one you added, and that the file you copied is the one named for this machine.
-2. **Survives a restart.** Restart the machine once more from the service menu. It should drop offline and come back **Online** on its own within a few minutes, with nobody touching it. A machine that is only Online right after you opened the app is not finished: go back to step 5 and check the read-write setting held.
+1. **Online in MCOS.** After the restart in step 12, within about a minute or two, open **Machines** in MCOS. This machine should show as **Online**, with a "last seen" time from the last minute or two. If it does not, check that the number on the machine matches the one you added, and that the file you copied is the one named for this machine.
+2. **Online on its own.** The machine must come back **Online** on its own after the step 12 restart, with nobody touching it or opening the app. A machine that is only Online right after you opened the app is not finished: go back to step 5 and check the read-write setting held.
 
-The install is done only when check 1 passes.
+The install is done only when both checks pass.
 
 ---
 
@@ -161,7 +167,9 @@ The install is done only when check 1 passes.
 
 **The app says "Provisioned: yes" but the machine never shows Online in MCOS.** Check, in this order: the wifi signal where the machine stands; that the number on the machine (`Machine.txt`) is the number you added in MCOS; that the file you copied is the one made for this machine. If none of these explains it, stop and send MediCube the machine number and what the screen says. This has happened on a real install without a confirmed cause, so do not guess further.
 
-**You need to set a machine up again.** The settings file cannot be read back off a machine that was already set up. Make a fresh one with **Rotate token** in MCOS (see the warning in Part 1, step 3) and repeat steps 10 and 11.
+**MCOS shows the machine Online, but the screen or products can't be read, or "Checkout folders" says not set up.** The app has not picked up its folders yet. Restart the machine once from the service menu (step 12) and wait about two minutes. If it still fails, contact MediCube.
+
+**You need to set a machine up again.** The settings file cannot be read back off a machine that was already set up. Make a fresh one with **Rotate token** in MCOS (see the warning in Part 1, step 3) and repeat steps 10 to 12.
 
 ---
 
